@@ -21,3 +21,30 @@ It would be nice if we could add the following features, but they are not requir
 - Movies have star ratings in addition to reviews.
 
 Please contact stakeholders if you need any clarity on the requirements.
+
+
+
+## MVP Goals
+
+Sign Up
+     Email
+     Username 
+     Password
+     Confirm Password
+
+Login
+    Email
+    Password
+
+Home
+    Display All Movies
+    Search Movies by name 
+
+Movie Details
+    Display movie details
+    Review comments
+
+Account Details
+    Display Account details
+    Change Password
+      
