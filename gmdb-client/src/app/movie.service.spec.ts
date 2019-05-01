@@ -11,8 +11,10 @@ describe('MovieService', () => {
 
   // let mockMovieService: MockMovieService;
   let movieService: MovieService;
+
   let injector: TestBed;
   let httpMock: HttpTestingController;
+
 
 
   beforeEach(() => TestBed.configureTestingModule({
@@ -20,7 +22,8 @@ describe('MovieService', () => {
     imports: [HttpClientTestingModule],
   }));
 
-  afterEach(() => {
+
+  afterEach(()=>{
     httpMock.verify();
 
   })
@@ -42,6 +45,7 @@ describe('MovieService', () => {
   it('should have getMoviesByName Method', () => {
     expect(movieService.getMoviesByTitle).toBeTruthy;
   })
+
 
   it('should make http GET call and get all movies', () => {
 
@@ -114,6 +118,5 @@ describe('MovieService', () => {
         }]
     return data;
   }
-
 
 });

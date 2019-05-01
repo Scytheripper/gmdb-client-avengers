@@ -7,9 +7,7 @@ import { Movie } from './movie.js';
   providedIn: 'root'
 })
 export class MovieService {
-   
 
-  
   constructor(private httpclient: HttpClient) { 
     
   }
@@ -29,4 +27,5 @@ export class MovieService {
 }
 
   
+
 }
