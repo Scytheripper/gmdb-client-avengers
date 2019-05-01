@@ -6,4 +6,12 @@ import { Injectable } from '@angular/core';
 export class MovieService {
 
   constructor() { }
+
+  getMovies(){
+
+  }
+
+  getMoviesByName(){
+//TODO method
+  }
 }
