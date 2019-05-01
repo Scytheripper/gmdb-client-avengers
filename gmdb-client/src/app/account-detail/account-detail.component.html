@@ -10,9 +10,10 @@
     <form (ngSubmit)="changePassword()" [formGroup]="passwordForm">
         <input name="newPassword" formControlName="newPassword" type="password">
         <input name="confirmPassword" formControlName="confirmPassword" type="password">
-        <input *ngIf="passwordForm.controls.newPassword.value === passwordForm.controls.confirmPassword.value && passwordForm.controls.confirmPassword.value !== ''; else password-error" type="submit" value="Submit">
-        <ng-template></ng-template>
-        <p>Make sure both password are the same</p>
+        <input *ngIf="passwordForm.controls.newPassword.value === passwordForm.controls.confirmPassword.value && passwordForm.controls.confirmPassword.value !== ''; else passwordsNotMatching" type="submit" value="Submit">
+        <ng-template #passwordsNotMatching>
+          <p>Make sure both password are the same</p>
+        </ng-template>
     </form>
   </div>
 </div>

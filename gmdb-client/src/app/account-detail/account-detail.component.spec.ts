@@ -76,5 +76,5 @@ describe('AccountDetailComponent', () => {
     component.passwordForm.controls.confirmPassword.setValue('password');
 
     expect(component.changePassword()).toEqual(true);
-  })
+  });
 });
