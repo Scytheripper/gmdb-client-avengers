@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { User } from './user';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login(username,password):Observable<User> {
-    return this.http.get<User>('http://localhost:4200/assets/users.json');
+    return this.http.get<User>(environment.API_URL);
   }
 
   setLoggedInUser(user: User) {
@@ -25,10 +26,10 @@ export class UserService {
   }
 
   updateUser(user: User) {
-    this.http.put('http://localhost:4200/assets/users.json', user).subscribe();
+    this.http.put(environment.API_URL, user).subscribe();
   }
 
   signup(user: User) {
-    this.http.post('http://localhost:4200/assets/users.json', user).subscribe();
+    this.http.post(environment.API_URL, user).subscribe();
   }
 }

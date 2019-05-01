@@ -3,6 +3,8 @@ import { TestBed, getTestBed, inject } from '@angular/core/testing';
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { environment } from 'src/environments/environment';
+
 let injector: TestBed;
 let httpMock: HttpTestingController;
 
@@ -38,7 +40,7 @@ describe('UserService', () => {
       expect(user.username).toEqual('guest');
     });
 
-    const req = httpMock.expectOne('http://localhost:4200/assets/users.json');
+    const req = httpMock.expectOne(environment.API_URL);
     expect(req.request.method).toBe('GET');
     req.flush(user);
   });
@@ -61,7 +63,7 @@ describe('UserService', () => {
 
     service.updateUser(user);
 
-    const req = httpMock.expectOne('http://localhost:4200/assets/users.json');
+    const req = httpMock.expectOne(environment.API_URL);
     expect(req.request.method).toBe('PUT');
   });
 
@@ -71,7 +73,7 @@ describe('UserService', () => {
 
     service.signup(user);
 
-    const req = httpMock.expectOne('http://localhost:4200/assets/users.json');
+    const req = httpMock.expectOne(environment.API_URL);
     expect(req.request.method).toBe('POST');    
   })
 
