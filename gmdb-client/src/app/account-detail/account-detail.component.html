@@ -12,7 +12,7 @@
         <input name="confirmPassword" formControlName="confirmPassword" type="password">
         <input *ngIf="passwordForm.controls.newPassword.value === passwordForm.controls.confirmPassword.value && passwordForm.controls.confirmPassword.value !== ''; else passwordsNotMatching" type="submit" value="Submit">
         <ng-template #passwordsNotMatching>
-          <p>Make sure both password are the same</p>
+          <p>Make sure both password are the same!</p>
         </ng-template>
     </form>
   </div>

@@ -36,7 +36,7 @@ export class AccountDetailComponent implements OnInit {
 
   //return true on success
   changePassword():boolean {
-    if(this.passwordForm.controls.newPassword.value === this.passwordForm.controls.confirmPassword.value){
+    if(this.passwordForm.valid){
       this.user.password = this.passwordForm.controls.newPassword.value;
       this.userService.updateUser(this.user);// tell the service to update on the backend!
       console.log(this.user.password);
