@@ -7,7 +7,7 @@ import { Movie } from './movie.js';
   providedIn: 'root'
 })
 export class MovieService {
-
+   
 
   
   constructor(private httpclient: HttpClient) { 
@@ -16,9 +16,21 @@ export class MovieService {
 
   getMovies(): Observable<Movie[]>{
     return this.httpclient.get<Movie[]>('http://localhost:4200/assets/movies-data.json');
+  
   }
 
-  getMoviesByTitle() {
-    //TODO method
-  }
+  // getMoviesByTitle(title): Observable<Movie[]>{
+  //   return this.httpclient.get<Movie[]>('http://localhost:4200/assets/movies-data.json/' + title);
+  // }
+
+  getMoviesByTitle(title: string){  
+    let movie :Movie[]
+     this.getMovies()
+     .subscribe(movies => {
+          movie = movies.filter(m=>m.Title=title).map(m=>m);
+     })
+     return movie;
+}
+
+  
 }
