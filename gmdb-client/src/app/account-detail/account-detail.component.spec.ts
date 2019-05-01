@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AccountDetailComponent } from './account-detail.component';
 import { UserService } from '../user.service';
 import { User } from '../user';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
 
 class MockUserService {
@@ -30,6 +31,10 @@ describe('AccountDetailComponent', () => {
       declarations: [ AccountDetailComponent ],
       providers: [
         {provide: UserService, useClass: MockUserService }
+      ],
+      imports: [
+        ReactiveFormsModule,
+        FormsModule
       ]
     })
     .compileComponents();
@@ -60,4 +65,16 @@ describe('AccountDetailComponent', () => {
     expect(fixture.nativeElement.querySelector('#username').textContent).toEqual('guest');
     expect(fixture.nativeElement.querySelector('#email').textContent).toEqual('email@email.com');
   });
+
+  it('should contain a form group with for the new password and confirmation', () => {
+    expect(component.passwordForm.controls.newPassword).toBeTruthy();
+    expect(component.passwordForm.controls.confirmPassword).toBeTruthy();
+  });
+
+  it('should make sure the passwords are the same before submit', () => {
+    component.passwordForm.controls.newPassword.setValue('password');
+    component.passwordForm.controls.confirmPassword.setValue('password');
+
+    expect(component.changePassword()).toEqual(true);
+  })
 });

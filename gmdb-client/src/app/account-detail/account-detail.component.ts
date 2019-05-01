@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-account-detail',
@@ -10,9 +11,16 @@ import { User } from '../user';
 export class AccountDetailComponent implements OnInit {
 
   user: User;
-  constructor(private userService: UserService) { }
+  changingPassword = false;
+  passwordForm: FormGroup;
+
+  constructor(private userService: UserService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.passwordForm = this.fb.group({
+      newPassword: ['', [Validators.minLength(6), Validators.required]],
+      confirmPassword: ['', [Validators.minLength(6), Validators.required]]
+    });
     this.user = this.userService.getLoggedInUser();
     this.user = {
       id: 1,
@@ -20,6 +28,22 @@ export class AccountDetailComponent implements OnInit {
       password: "password",
       email: "email@email.com" 
     }  
+  }
+
+  toggleChangingPassword() {
+    this.changingPassword = !this.changingPassword;
+  }
+
+  //return true on success
+  changePassword():boolean {
+    if(this.passwordForm.controls.newPassword.value === this.passwordForm.controls.confirmPassword.value){
+      this.user.password = this.passwordForm.controls.newPassword.value;
+      this.userService.updateUser(this.user);
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
 }

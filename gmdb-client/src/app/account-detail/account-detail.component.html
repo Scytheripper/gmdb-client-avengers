@@ -5,5 +5,15 @@
 </div>
 
 <div id="change-password"class="container">
-  <button>Change Password</button>
+  <button (click)="toggleChangingPassword()">Change Password</button>
+  <div *ngIf="changingPassword">
+    <form (ngSubmit)="changePassword()" [formGroup]="passwordForm">
+        <input name="newPassword" formControlName="newPassword" type="password">
+        <input name="confirmPassword" formControlName="confirmPassword" type="password">
+        <input *ngIf="passwordForm.controls.newPassword.value === passwordForm.controls.confirmPassword.value && passwordForm.controls.confirmPassword.value !== ''; else password-error" type="submit" value="Submit">
+        <ng-template></ng-template>
+        <p>Make sure both password are the same</p>
+    </form>
+  </div>
 </div>
+
