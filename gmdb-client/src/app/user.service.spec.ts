@@ -65,5 +65,14 @@ describe('UserService', () => {
     expect(req.request.method).toBe('PUT');
   });
 
+  it('should allow user to sign up', () => {
+    const service: UserService = TestBed.get(UserService);
+    const user = {id: 1, username: 'guest', password: 'password', email: 'email@email.com'};
+
+    service.signup(user);
+
+    const req = httpMock.expectOne('http://localhost:4200/assets/users.json');
+    expect(req.request.method).toBe('POST');    
+  })
 
 });

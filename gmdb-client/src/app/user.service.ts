@@ -27,4 +27,8 @@ export class UserService {
   updateUser(user: User) {
     this.http.put('http://localhost:4200/assets/users.json', user).subscribe();
   }
+
+  signup(user: User) {
+    this.http.post('http://localhost:4200/assets/users.json', user).subscribe();
+  }
 }
