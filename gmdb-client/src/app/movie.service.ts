@@ -19,10 +19,6 @@ export class MovieService {
   
   }
 
-  // getMoviesByTitle(title): Observable<Movie[]>{
-  //   return this.httpclient.get<Movie[]>('http://localhost:4200/assets/movies-data.json/' + title);
-  // }
-
   getMoviesByTitle(title: string){  
     let movie :Movie[]
      this.getMovies()
