@@ -4,6 +4,7 @@ import { MovieDetailsComponent } from './movie-details.component';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { MovieService } from '../movie.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 class MockMovieService {
   getMovieBYID(){

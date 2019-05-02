@@ -5,6 +5,7 @@ import { MovieService } from '../movie.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Movie } from '../movie';
 import { Observable, of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
 
 
 
@@ -88,7 +89,7 @@ describe('HomeComponent', () => {
       imports: [
         ReactiveFormsModule,
         FormsModule,
-
+        RouterTestingModule
       ]
     })
       .compileComponents();

@@ -1,7 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <nav>
     <div class="nav-wrapper">
-        <a routerLink="/home" class="brand-logo">Gdbm Avengers</a>
+        <a routerLink="/home" class="brand-logo">GMDb</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li><a *ngIf="userService.loggedInUser === undefined" routerLink="/login">Log In</a></li>
@@ -20,5 +21,24 @@
 </ul>
 
 <h1>Welcome to {{title}}!</h1>
-<router-outlet></router-outlet>
 
+<router-outlet></router-outlet>
+<footer class="page-footer" style="height: 150px;">
+        
+           
+              <h5 class="white-text">Follow GMDB On</h5>
+         
+               <a class="fa fa-facebook" href="#!"></a>
+           <a class="fa fa-twitter" href="#!"></a>
+              <a class="fa fa-instagram" href="#!"></a>
+                <a class="fa fa-youtube" href="#!"></a>
+           
+           
+     
+        <div class="footer-copyright">
+          <div class="container">
+          © 2019 Copyright Text
+          
+          </div>
+        </div>
+      </footer>
