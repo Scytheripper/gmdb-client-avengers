@@ -8,11 +8,22 @@
      <input type="submit" value="Search" style="width:180px;height:30px;">
    </div>
 
-   <div>
-     <ul>
+   <div class="container">
+     <!-- <ul>
         <li *ngFor="let movie of movieResults"  href="">{{movie.Title}}</li>
-     </ul>
-
+     </ul> -->
+     <div class="row">
+        <div *ngFor="let movie of movieResults"  class="col m4 s7">
+          <div class="card blue-grey darken-1">
+            <div class="card-image">
+              <img src="{{movie.Poster}}" alt="{{movie.Title}}">
+            </div>
+            <div class="card-action">
+              <a href="#">{{movie.Title}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
         
    </div>
 
