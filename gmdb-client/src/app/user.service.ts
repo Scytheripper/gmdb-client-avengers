@@ -11,6 +11,9 @@ export class UserService {
 
   loggedInUser: User;
 
+  //all of the users to store in local storage
+  users = [];
+
   constructor(private http: HttpClient) { }
 
   login(username,password):Observable<User> {
@@ -30,6 +33,13 @@ export class UserService {
   }
 
   signup(user: User) {
+    //STORE THE USER IN LOCAL STORAGE FOR NOW 
+    this.users.push(user);
+    localStorage.setItem('users', JSON.stringify(this.users));
+    ///////////////////////////////////////////////////////////
+
     this.http.post(environment.API_URL, user).subscribe();
+
+    console.log('User signed up');
   }
 }

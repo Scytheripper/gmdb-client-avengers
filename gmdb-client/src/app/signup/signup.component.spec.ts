@@ -1,6 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignupComponent } from './signup.component';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { UserService } from '../user.service';
+
+class MockUserService {
+  signup() {
+    return true;
+  }
+}
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
@@ -8,7 +16,14 @@ describe('SignupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignupComponent ]
+      declarations: [ SignupComponent ],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      providers: [
+        {provide: UserService, useClass: MockUserService}
+      ]
     })
     .compileComponents();
   }));
@@ -24,9 +39,10 @@ describe('SignupComponent', () => {
   });
 
   it('should validate submited input ', () => {
-    component.signupForm.controls.username = 'Username';
-    component.signupForm.controls.email = 'Test@email.com';
-    component.signupForm.controls.password = 'password';
+    component.signupForm.controls.username.setValue('Username');
+    component.signupForm.controls.email.setValue('Test@email.com');
+    component.signupForm.controls.password.setValue('password');
+    component.signupForm.controls.confirmPassword.setValue('password');
 
     expect(component.signupUser()).toEqual(true);
   });

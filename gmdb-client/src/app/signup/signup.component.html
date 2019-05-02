@@ -1,3 +1,14 @@
-<p>
-  signup works!
-</p>
+<div id="signup-form"class="container">
+  <h2>Create Account</h2>
+  <div>
+    <form (ngSubmit)="signupUser()" [formGroup]="signupForm">
+        <input type="email" name="email" placeholder="email" formControlName="email">
+        <span *ngIf = "signupForm.controls.email.dirty && signupForm.controls.email.invalid">Enter a valid email!</span>
+        <input type="text" name="username" placeholder="username" formControlName="username">
+        <span *ngIf = "signupForm.controls.email.dirty && signupForm.controls.email.invalid">Must be 3 characters!</span>
+        <input name="password" formControlName="password" placeholder="password" type="password">
+        <input name="confirmPassword" formControlName="confirmPassword" placeholder="confirm password" type="password">
+        <input  *ngIf="signupForm.valid" type="submit" value="Sign Up!">
+    </form>
+  </div>
+</div>
