@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SignupComponent } from './signup.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { UserService } from '../user.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 class MockUserService {
   signup() {
@@ -19,7 +20,9 @@ describe('SignupComponent', () => {
       declarations: [ SignupComponent ],
       imports: [
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterTestingModule,
+    
       ],
       providers: [
         {provide: UserService, useClass: MockUserService}
@@ -44,6 +47,6 @@ describe('SignupComponent', () => {
     component.signupForm.controls.password.setValue('password');
     component.signupForm.controls.confirmPassword.setValue('password');
 
-    expect(component.signupUser()).toEqual(true);
+    expect(component.signupUser()).toBeTruthy();
   });
 });
