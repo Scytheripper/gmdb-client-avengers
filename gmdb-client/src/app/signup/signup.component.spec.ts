@@ -22,4 +22,12 @@ describe('SignupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should validate submited input ', () => {
+    component.signupForm.controls.username = 'Username';
+    component.signupForm.controls.email = 'Test@email.com';
+    component.signupForm.controls.password = 'password';
+
+    expect(component.signupUser()).toEqual(true);
+  });
 });
