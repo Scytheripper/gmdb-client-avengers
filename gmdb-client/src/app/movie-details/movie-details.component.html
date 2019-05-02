@@ -1,3 +1,23 @@
-<p>
-  movie-details works!
-</p>
+<h1>{{movie.Title}}</h1>
+<!-- 
+<img src="{{movie.Poster}}">
+<div *ngFor="let item of movie| keyvalue">
+  <b>{{item.key}}</b>:
+  {{item.value}}
+</div> -->
+
+
+<div class="card text-center">
+
+  <img class="card-img-top" src="{{movie.Poster}}">
+  <div class="card-body">
+    <h5 class="card-title">{{movie.Title}}</h5>
+    <div *ngFor="let item of movie| keyvalue" class="col m4 s7">
+      <p class="card-text">
+        <b>{{item.key}}</b>:
+        {{item.value}}
+      </p>
+    </div>
+    <button routerLink="/home" class="btn btn-primary">Go Back</button>
+  </div>
+</div>
