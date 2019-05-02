@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Movie } from '../movie';
 import { Observable, of } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 
 class MockMovieService{
@@ -88,7 +88,9 @@ describe('HomeComponent', () => {
       ],
       imports: [
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        RouterModule,
+      
 
       ]
     })

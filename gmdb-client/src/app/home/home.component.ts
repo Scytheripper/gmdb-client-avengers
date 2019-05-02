@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { Movie } from '../movie';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+//import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
  
 
   constructor(private movieService:MovieService , private fb:FormBuilder ,
-          private router:Router) { }
+         /*private router:Router*/) { }
 
   ngOnInit() {
     //initailise form
