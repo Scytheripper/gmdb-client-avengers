@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Movie } from './movie.js';
+import  {movies}  from '../assets/movies-data.json';
+import { Movie, Rating } from './movie.js';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
+
+  moviesValue : Movie[];
+  private postsURL = 'http://localhost:4200/assets/movies-data.json';
+  searchedMovie;
 
   constructor(private httpclient: HttpClient) { 
     
@@ -17,15 +24,17 @@ export class MovieService {
   
   }
 
-  getMoviesByTitle(title: string){  
-    let 
-     this.getMovies()
-     .subscribe(movies => {
-          movie = movies.filter(m=>m.Title=title).map(m=>m);
-     })
-     return movie;
+
+  getMoviesByTitle(title: string):Observable<Movie[]>{ 
+    //.match(new RegExp(`${title}`); 
+    let movieInfo;
+     movieInfo = movies.map( function(movie) {
+      if( movie.Title.includes(title)){
+          return movie;
+      }
+     });
+     return of(movieInfo);
+}
 }
 
-  
 
-}

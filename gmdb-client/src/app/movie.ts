@@ -31,7 +31,6 @@
             Production: string;
             Website: string;
             Response: string;
-            totalSeasons: string;
     
         }
 
