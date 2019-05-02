@@ -8,6 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 
 
@@ -16,7 +17,8 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
     AppComponent,
     SignupComponent,
     AccountDetailComponent,
-    HomeComponent
+    HomeComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,
