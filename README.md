@@ -10,6 +10,7 @@ Welcome to the gMDB client project. We're excited to have you build this project
 - Users can also register to be able to review the movies
 - Users can login
 - Users can reset their password
+- Users can create lists for movies (watch list, favorites, etc)
 
 We expect at least 1 update per day (via PR)
 
@@ -17,34 +18,32 @@ We expect at least 1 update per day (via PR)
 
 It would be nice if we could add the following features, but they are not required:
 
-- Users can make their own movie lists (watch list, favorites list, etc)
 - Movies have star ratings in addition to reviews.
 
 Please contact stakeholders if you need any clarity on the requirements.
 
 
-
 ## MVP Goals
 
 Sign Up
-     Email
-     Username 
-     Password
-     Confirm Password
+     - Email
+     - Username 
+     - Password
+     - Confirm Password
 
 Login
-    Email
-    Password
+    - Email
+    - Password
 
 Home
-    Display All Movies
-    Search Movies by name 
+    - Display All Movies
+    - Search Movies by name 
 
 Movie Details
-    Display movie details
-    Review comments
+    - Display movie details
+    - Review comments
 
 Account Details
-    Display Account details
-    Change Password
+    - Display Account details
+    - Change Password
       

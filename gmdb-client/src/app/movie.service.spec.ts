@@ -4,6 +4,7 @@ import { MovieService } from './movie.service';
 import { HttpResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Subscriber } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -65,7 +66,10 @@ describe('MovieService', () => {
 
   beforeEach(() => TestBed.configureTestingModule({
     providers: [MovieService],
-    imports: [HttpClientTestingModule],
+    imports: [
+      HttpClientTestingModule,
+      RouterModule
+    ],
   }));
 
 
