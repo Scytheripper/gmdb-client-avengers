@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 
 
@@ -14,7 +15,8 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     AccountDetailComponent,
-    HomeComponent
+    HomeComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,
