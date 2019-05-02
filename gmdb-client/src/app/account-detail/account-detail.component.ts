@@ -22,12 +22,15 @@ export class AccountDetailComponent implements OnInit {
       confirmPassword: ['', [Validators.minLength(6), Validators.required]]
     });
     this.user = this.userService.getLoggedInUser();
+
+    //TEMP USER TO REFLECT USE
     this.user = {
       id: 1,
       username: "guest",
       password: "password",
       email: "email@email.com" 
     }  
+    //////////////////////////
   }
 
   toggleChangingPassword() {
@@ -39,7 +42,6 @@ export class AccountDetailComponent implements OnInit {
     if(this.passwordForm.valid){
       this.user.password = this.passwordForm.controls.newPassword.value;
       this.userService.updateUser(this.user);// tell the service to update on the backend!
-      console.log(this.user.password);
       return true;
     }
     else{
