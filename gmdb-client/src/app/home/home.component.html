@@ -1,3 +1,24 @@
-<p>
-  home works!
-</p>
+
+<h3>The Movie World!!!</h3>
+
+<form [formGroup]="movieSearchForm"  (ngSubmit)="renderSearch()">
+
+   <div> 
+     <input type="text" formControlName="searchCriteria" placeholder="Enter movie name !!"/>
+     <input type="submit" value="Search" style="width:180px;height:30px;">
+   </div>
+
+   <div>
+     <ul>
+        <li *ngFor="let movie of movieResults"  href="">{{movie.Title}}</li>
+     </ul>
+
+        
+   </div>
+
+
+</form>
+
+
+
+
