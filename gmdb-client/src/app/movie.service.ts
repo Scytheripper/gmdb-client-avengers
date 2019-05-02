@@ -24,6 +24,7 @@ export class MovieService {
   
   }
 
+
   getMoviesByTitle(title: string):Observable<Movie[]>{ 
     //.match(new RegExp(`${title}`); 
     let movieInfo;
