@@ -34,12 +34,9 @@ describe('UserService', () => {
     //Setup
     const service: UserService = TestBed.get(UserService);
     const user = {id: 1, username: 'guest', password: 'password', email: 'email@email.com'};
-
-
-    service.login('guest', 'password').subscribe((user) => {
-      expect(user.username).toEqual('guest');
-    });
-
+    service.users = [user];
+    expect(service.login('guest', 'password')).toBe(true);
+ 
     const req = httpMock.expectOne(environment.API_URL);
     expect(req.request.method).toBe('GET');
     req.flush(user);

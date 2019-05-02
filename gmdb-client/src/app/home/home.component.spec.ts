@@ -7,7 +7,6 @@ import { Movie } from '../movie';
 import { Observable, of } from 'rxjs';
 
 
-
 class MockMovieService{
 
   tempMovieData: Movie[];
@@ -87,8 +86,7 @@ describe('HomeComponent', () => {
       ],
       imports: [
         ReactiveFormsModule,
-        FormsModule
-
+        FormsModule,
       ]
     })
     .compileComponents();

@@ -109,7 +109,7 @@ describe('MovieService', () => {
 
   it('should get movie by title', () => {
     let title='Avengers'
-    //const req = httpMock.expectOne('http://localhost:4200/assets/movies-data.json');
+    
     let result;
     result =movieService.getMovies().
     subscribe(movieList => {
@@ -122,7 +122,4 @@ describe('MovieService', () => {
     const req = httpMock.expectOne('http://localhost:4200/assets/movies-data.json');
     expect(req.request.method).toBe('GET');
   });
-
- 
-
 });

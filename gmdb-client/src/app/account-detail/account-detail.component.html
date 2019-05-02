@@ -1,5 +1,5 @@
 
-<div class="container">
+<div *ngIf="userService.loggedInUser !== undefined" class="container">
   <div>Username: <span id="username">{{user.username}}</span></div>
   <div>Email: <span id="email">{{user.email}}</span></div>
 </div>

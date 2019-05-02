@@ -31,6 +31,8 @@ export class AccountDetailComponent implements OnInit {
       email: "email@email.com" 
     }  
     //////////////////////////
+
+    this.user = this.userService.getLoggedInUser();
   }
 
   toggleChangingPassword() {
