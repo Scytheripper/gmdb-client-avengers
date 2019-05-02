@@ -1,3 +1,11 @@
-<p>
-  login works!
-</p>
+<div id="login-form"class="container">
+    <h2>Login</h2>
+    <div>
+      <form (ngSubmit)="loginUser()" [formGroup]="loginForm">
+          <input type="text" name="username" placeholder="username" formControlName="userName">
+          <span *ngIf = "loginForm.controls.userName.dirty && loginForm.controls.userName.invalid">Enter your user name!!!</span>
+          <input name="password" formControlName="password" placeholder="password" type="password">
+          <input  *ngIf="loginForm.valid" type="submit" value="Log In">
+      </form>
+    </div>
+  </div>

@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   movies: Movie[];
   movieSearchForm : FormGroup;
   movieResults:[];
+  defaultResult:Movie[];
 
  
 
@@ -29,10 +30,11 @@ export class HomeComponent implements OnInit {
   }
 
   getDefaultMovieList(){
-     this.movieService.getMovies().subscribe(movieList => {
-      this.movies = movieList;
-    })
-   // this.result=this.movies['movies'][0].Title;
+
+    this.movieService.getMovies().
+    subscribe(movieList => {
+      this.movieResults = movieList['movies']
+    });  
   }
 
   renderSearch(){

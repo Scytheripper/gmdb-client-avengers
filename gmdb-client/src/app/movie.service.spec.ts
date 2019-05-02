@@ -107,15 +107,20 @@ describe('MovieService', () => {
 
   })
 
-  it('should make http GET call and get movie by title', () => {
+  it('should get movie by title', () => {
     let title='Avengers'
-    let result = movieService.getMoviesByTitle(title);
-    //const req = httpMock.expectOne('http://localhost:4200/assets/movies-data.json');
-    movieService.getMoviesByTitle(title)
-      expect(result[0].Title).toContain('Avengers');
-   
+    
+    let result;
+    result =movieService.getMovies().
+    subscribe(movieList => {
+      this.movieResults = movieList['movies'].
+      filter(movie => {
+        result=movie.Title.toLowerCase().includes(title.toLowerCase());
+      });
+      expect(result).toContain('Avengers'); 
     });
 
- 
-
+    const req = httpMock.expectOne('http://localhost:4200/assets/movies-data.json');
+    expect(req.request.method).toBe('GET');
+  });
 });
