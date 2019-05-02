@@ -23,28 +23,27 @@ It would be nice if we could add the following features, but they are not requir
 Please contact stakeholders if you need any clarity on the requirements.
 
 
-
 ## MVP Goals
 
 Sign Up
-     Email
-     Username 
-     Password
-     Confirm Password
+     - Email
+     - Username 
+     - Password
+     - Confirm Password
 
 Login
-    Email
-    Password
+    - Email
+    - Password
 
 Home
-    Display All Movies
-    Search Movies by name 
+    - Display All Movies
+    - Search Movies by name 
 
 Movie Details
-    Display movie details
-    Review comments
+    - Display movie details
+    - Review comments
 
 Account Details
-    Display Account details
-    Change Password
+    - Display Account details
+    - Change Password
       
