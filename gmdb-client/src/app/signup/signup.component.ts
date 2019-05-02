@@ -33,7 +33,6 @@ export class SignupComponent implements OnInit {
       return true;
     }
     else {
-      console.log('ERROR');
       return false;
     }
   }

@@ -38,7 +38,7 @@ describe('SignupComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should validate submited input ', () => {
+  it('should check if signup validates submited input ', () => {
     component.signupForm.controls.username.setValue('Username');
     component.signupForm.controls.email.setValue('Test@email.com');
     component.signupForm.controls.password.setValue('password');
