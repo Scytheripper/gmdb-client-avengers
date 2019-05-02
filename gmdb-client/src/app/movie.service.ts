@@ -18,7 +18,7 @@ export class MovieService {
   }
 
   getMoviesByTitle(title: string){  
-    let movie :Movie[]
+    let 
      this.getMovies()
      .subscribe(movies => {
           movie = movies.filter(m=>m.Title=title).map(m=>m);
