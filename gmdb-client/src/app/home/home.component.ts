@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { Movie } from '../movie';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,17 +12,47 @@ import { Movie } from '../movie';
 export class HomeComponent implements OnInit {
 
   movies: Movie[];
+  movieSearchForm : FormGroup;
+  movieResults:[];
 
-  constructor(private movieService:MovieService) { }
+ 
+
+  constructor(private movieService:MovieService , private fb:FormBuilder ,
+          private router:Router) { }
 
   ngOnInit() {
+    //initailise form
+    this.movieSearchForm = this.fb.group({
+       searchCriteria :['']
+    })
     this.getDefaultMovieList();
   }
 
   getDefaultMovieList(){
-    return this.movieService.getMovies().subscribe(movieList => {
+     this.movieService.getMovies().subscribe(movieList => {
       this.movies = movieList;
     })
+   // this.result=this.movies['movies'][0].Title;
+  }
+
+  renderSearch(){
+    //Todo Search    
+    console.log("movie title---"+this.movieSearchForm.value.searchCriteria);
+    if(this.movieSearchForm.value.searchCriteria === ""  || 
+        null == this.movieSearchForm.value.searchCriteria){
+          this.movieService.getMovies().
+             subscribe(movieList => this.movies=movieList);
+             this.movieResults=this.movies['movies'];
+
+        }
+    else{
+      this.movieService.getMovies().
+      subscribe(movieList => {
+        this.movieResults = movieList['movies'].
+        filter(movie => movie.Title.toLowerCase().includes(this.movieSearchForm.controls.searchCriteria.value.toLowerCase()));
+      });
+      
+    } 
   }
 
 }

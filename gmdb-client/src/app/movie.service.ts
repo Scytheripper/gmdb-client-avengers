@@ -12,6 +12,7 @@ import { Movie, Rating } from './movie.js';
 export class MovieService {
 
   moviesValue : Movie[];
+  movieList = movies;
   private postsURL = 'http://localhost:4200/assets/movies-data.json';
   searchedMovie;
 
@@ -25,15 +26,16 @@ export class MovieService {
   }
 
 
-  getMoviesByTitle(title: string):Observable<Movie[]>{ 
+  getMoviesByTitle(title: string):Movie[]{ 
     //.match(new RegExp(`${title}`); 
+    
     let movieInfo;
      movieInfo = movies.map( function(movie) {
       if( movie.Title.includes(title)){
           return movie;
       }
      });
-     return of(movieInfo);
+     return movieInfo;
 }
 }
 
