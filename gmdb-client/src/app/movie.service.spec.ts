@@ -117,14 +117,11 @@ describe('MovieService', () => {
       filter(movie => {
         result=movie.Title.toLowerCase().includes(title.toLowerCase());
       });
-      expect(result).toContain('Avengers');
-
-      
+      expect(result).toContain('Avengers');    
     });
-
-
-
-    });
+    const req = httpMock.expectOne('http://localhost:4200/assets/movies-data.json');
+    expect(req.request.method).toBe('GET');
+  });
 
  
 

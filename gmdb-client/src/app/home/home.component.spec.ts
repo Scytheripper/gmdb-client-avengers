@@ -5,8 +5,7 @@ import { MovieService } from '../movie.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Movie } from '../movie';
 import { Observable, of } from 'rxjs';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+
 
 
 class MockMovieService{
@@ -110,10 +109,7 @@ describe('HomeComponent', () => {
 
   
   it('should display all Movies when no search condition exist', () => {
-    let actual = mockMovieService.getMovies().
-     subscribe(m=> {
-        return m;
-     });
+    let actual = mockMovieService.getMovies();
     expect(actual instanceof Observable).toBeTruthy;
   });
 
