@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { User } from '../user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,7 @@ import { User } from '../user';
 export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
-  constructor(private fb: FormBuilder, private userService: UserService) { }
+  constructor(private fb: FormBuilder, private userService: UserService,private router:Router) { }
 
   ngOnInit() {
     this.signupForm = this.fb.group({
@@ -29,6 +30,7 @@ export class SignupComponent implements OnInit {
       user.username = this.signupForm.controls.username.value;
       user.password = this.signupForm.controls.password.value;
       this.userService.signup(user);
+      this.router.navigateByUrl('/login');
       console.log('User added');
       return true;
     }
