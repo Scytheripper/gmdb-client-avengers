@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { MovieService } from '../movie.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 class MockMovieService {
   getMovieBYID(){
@@ -53,13 +55,18 @@ describe('MovieDetailsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MovieDetailsComponent ],
-      imports: [],
+      imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientModule
+      ],
       providers: [
         {provide: ActivatedRoute, useValue: {
           params: of({movieId: 'something'})
         }},
         {provide: MovieService, useClass:MockMovieService}
-      ]
+      ],
+    
     })
     .compileComponents();
   }));

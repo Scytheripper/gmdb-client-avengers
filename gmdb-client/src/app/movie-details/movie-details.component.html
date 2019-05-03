@@ -21,3 +21,14 @@
     <button routerLink="/home" class="btn btn-primary">Go Back</button>
   </div>
 </div>
+
+<form [formGroup]="addReviewForm"  (ngSubmit)="addReview()">
+  <div>
+    <h5>Add Review:</h5>
+    <input type="text" formControlName="reviewTitle"  placeholder="Review Heading!!">
+</div>
+  <textarea name="comment" formControlName="reviewComment" placeholder="Your Review!!!"></textarea>
+  <input type="submit" value="Post Review" style="width:180px;height:30px;" [disabled]="addReviewForm.invalid">
+
+
+</form>

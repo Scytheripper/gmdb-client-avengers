@@ -11,6 +11,7 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
+import { ReviewComponent } from './review/review.component';
 
 
 
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     AccountDetailComponent,
     HomeComponent,
     MovieDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

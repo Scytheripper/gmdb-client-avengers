@@ -1,7 +1,7 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 import { MovieService } from './movie.service';
-import { HttpResponse } from '@angular/common/http';
+import { HttpResponse, HttpClientModule } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Subscriber } from 'rxjs';
 import { RouterModule } from '@angular/router';
@@ -68,7 +68,9 @@ describe('MovieService', () => {
     providers: [MovieService],
     imports: [
       HttpClientTestingModule,
-      RouterModule
+      RouterModule,
+      HttpClientModule
+      
     ],
   }));
 
