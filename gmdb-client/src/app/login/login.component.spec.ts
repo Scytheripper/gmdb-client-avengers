@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { UserService } from '../user.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 class MockUserService{
     login()
@@ -17,7 +18,7 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      imports: [ ReactiveFormsModule,FormsModule],
+      imports: [ ReactiveFormsModule,FormsModule, RouterTestingModule],
       providers:[ {provide: UserService, useClass: MockUserService } ]
     })
     .compileComponents();

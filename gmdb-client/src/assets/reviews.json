@@ -1,0 +1,10 @@
+{
+    "reviews": [
+        {
+            "emial": "ab@cd.com",
+            "movieId": "abc",
+            "reviewTitle": "test title",
+            "revieComment": "test comment" 
+        }
+    ]
+}

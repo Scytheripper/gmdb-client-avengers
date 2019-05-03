@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
 
   renderSearch(){
     //Todo Search    
-    console.log("movie title---"+this.movieSearchForm.value.searchCriteria);
     if(this.movieSearchForm.value.searchCriteria === ""  || 
         null == this.movieSearchForm.value.searchCriteria){
           this.movieService.getMovies().
