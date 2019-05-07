@@ -1,4 +1,4 @@
-<h1>{{movie.Title}}</h1>
+<h1>{{movie.title}}</h1>
 <!-- 
 <img src="{{movie.Poster}}">
 <div *ngFor="let item of movie| keyvalue">
@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<form [formGroup]="addReviewForm"  (ngSubmit)="addReview()">
+<form [formGroup]="addReviewForm"  (ngSubmit)="submitReview()">
   <div>
     <h5>Add Review:</h5>
     <input type="text" formControlName="reviewTitle"  placeholder="Review Heading!!">

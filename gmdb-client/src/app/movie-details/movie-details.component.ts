@@ -5,6 +5,7 @@ import { MovieService } from '../movie.service';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Review } from '../review';
+import { ReviewService } from '../review.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -24,7 +25,7 @@ export class MovieDetailsComponent implements OnInit {
   passedVari: Movie[];
 
   constructor(private route: ActivatedRoute, private movieService: MovieService
-    , private fb:FormBuilder,private userService: UserService) { }
+    , private fb:FormBuilder,private userService: UserService, private reviewService: ReviewService) { }
 
   ngOnInit() {
      //initailise form
@@ -58,6 +59,15 @@ export class MovieDetailsComponent implements OnInit {
     this.reviewObj.MovieId = movieId;
     this.reviewArr.push(this.reviewObj);
     localStorage.setItem('reviews',JSON.stringify(this.reviewArr));
+  }
+
+  submitReview(){
+    this.reviewService.submitReview({
+      movieId: this.id,
+      email: this.userService.getLoggedInUser().email,
+      description: this.addReviewForm.controls.reviewComment.value,
+      title: this.addReviewForm.controls.reviewTitle.value
+    });
   }
 
   

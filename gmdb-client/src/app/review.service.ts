@@ -5,6 +5,7 @@ import { reviews } from '../assets/reviews.json';
 import { Review } from './review.js';
 import { User } from './user.js';
 import { FormGroup } from '@angular/forms';
+import { environment } from 'src/environments/environment.js';
 
 
 @Injectable({
@@ -51,4 +52,12 @@ export class ReviewService {
   }
 
   //Use new api methods
+  submitReview(review) {
+    this.httpclient.post(`${environment.review_api_url}`, review);
+  }
+
+  getReviewsForMovie(movieId) {
+    this.httpclient.get(`${environment.review_api_url}?movieId=${movieId}`);
+  }
+
 }
