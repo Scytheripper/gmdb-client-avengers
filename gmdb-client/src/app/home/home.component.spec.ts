@@ -72,6 +72,11 @@ class MockMovieService {
       return of(this.movieMockData);
   }
 
+  getAllMovies(){
+    return of({movies: this.movieMockData});
+  }
+  searchForMovies(){}
+
 }
 
 

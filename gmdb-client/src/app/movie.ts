@@ -6,7 +6,6 @@
         }
     
         export class Movie {
-            id: number;
             Title: string;
             Year: string;
             Rated: string;

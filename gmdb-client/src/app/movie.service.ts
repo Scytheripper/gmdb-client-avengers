@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { movies } from '../assets/movies-data.json';
 import { Movie, Rating } from './movie.js';
+import { environment } from 'src/environments/environment.js';
 
 
 
@@ -42,6 +43,18 @@ export class MovieService {
 
   }
 
+  //NEW API USAGE////////////////////////////////////////////////////////////////
+  getAllMovies(): Observable<any> {
+    return this.httpclient.get<any>(`${environment.movie_api_url}/search/%20`);
+  }
+
+  searchMovie(keyword): Observable<any> {
+    return this.httpclient.get<any>(`${environment.movie_api_url}/search/${keyword}`);
+  }
+
+  getMovieById(id):Observable<any>{
+    return this.httpclient.get<any>(`${environment.movie_api_url}/detail/${id}`);
+  }
 }
 
 

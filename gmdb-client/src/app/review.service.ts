@@ -49,4 +49,6 @@ export class ReviewService {
     this.httpclient.put(this.reviewURL,reviewObj).subscribe();
 
   }
+
+  //Use new api methods
 }

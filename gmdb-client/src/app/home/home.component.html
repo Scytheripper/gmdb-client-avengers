@@ -1,7 +1,7 @@
 
 <h3>The Movie World!!!</h3>
 
-<form [formGroup]="movieSearchForm"  (ngSubmit)="renderSearch()">
+<form [formGroup]="movieSearchForm"  (ngSubmit)="searchForMovies()">
 
    <div> 
      <input type="text" formControlName="searchCriteria" placeholder="Enter movie name !!"/>
@@ -16,10 +16,10 @@
         <div *ngFor="let movie of movieResults"  class="col m4 s7">
           <div class="card blue-grey darken-1">
             <div class="card-image">
-              <img src="{{movie.Poster}}" alt="{{movie.Title}}">
+              <img src="{{movie.poster}}" alt="{{movie.title}}">
             </div>
             <div class="card-action">
-                <a routerLink="/movieDetails/{{movie.imdbID}}">{{movie.Title}}</a>
+                <a routerLink="/movieDetails/{{movie.imdbid}}">{{movie.title}}</a>
             </div>
           </div>
         </div>

@@ -34,7 +34,10 @@ export class MovieDetailsComponent implements OnInit {
    })
 
     this.route.params.subscribe(({movieId}) => this.id = movieId);
-    this.movie = this.movieService.getMovieBYID(this.id);
+    //this.movie = this.movieService.getMovieBYID(this.id);
+    this.movieService.getMovieById(this.id).subscribe(data => {
+      this.movie = data.movie;
+    })
   }
 
   addReview(){
