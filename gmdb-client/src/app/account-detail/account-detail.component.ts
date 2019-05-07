@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MovieList } from '../movie-list';
+import { MovieListService } from '../movie-list.service';
 
 @Component({
   selector: 'app-account-detail',
@@ -13,8 +15,9 @@ export class AccountDetailComponent implements OnInit {
   user: User;
   changingPassword = false;
   passwordForm: FormGroup;
+  movieLists: MovieList[];
 
-  constructor(private userService: UserService, private fb: FormBuilder) { }
+  constructor(private userService: UserService, private fb: FormBuilder, private movieListService: MovieListService) { }
 
   ngOnInit() {
     this.passwordForm = this.fb.group({
@@ -30,9 +33,11 @@ export class AccountDetailComponent implements OnInit {
       password: "password",
       email: "email@email.com" 
     }  
+    this.userService.loggedInUser = this.user;
     //////////////////////////
 
     this.user = this.userService.getLoggedInUser();
+    this.movieListService.getUsersLists(this.user.username).subscribe(movieLists => this.movieLists =  movieLists);
   }
 
   toggleChangingPassword() {
