@@ -24,7 +24,11 @@ export class HomeComponent implements OnInit {
     this.movieSearchForm = this.fb.group({
        searchCriteria :['']
     })
-    this.getDefaultMovieList();
+    //this.getDefaultMovieList();
+    this.movieService.getAllMovies().subscribe(data => {
+      console.log(data);
+      this.movieResults = data.movies;
+    });
   }
 
   getDefaultMovieList(){
@@ -52,6 +56,21 @@ export class HomeComponent implements OnInit {
       });
       
     } 
+  }
+
+  searchForMovies(){
+    if(this.movieSearchForm.value.searchCriteria === ""  || 
+    null == this.movieSearchForm.value.searchCriteria){
+      this.movieService.getAllMovies().subscribe(data => {
+        this.movieResults = data.movies;
+      });
+    }
+    else{
+      this.movieService.searchMovie(this.movieSearchForm.controls.searchCriteria.value).subscribe(data => {
+        this.movieResults = data.movies;
+      });
+    }
+
   }
 
 
