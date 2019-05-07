@@ -91,7 +91,7 @@ class MockMovieService {
   }
 }
 class MockReviewService {
-
+  getReviewsForMovie(){ return new Observable<any>(); }
 }
 describe('MovieDetailsComponent', () => {
   let component: MovieDetailsComponent;
