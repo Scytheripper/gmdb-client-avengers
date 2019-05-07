@@ -7,7 +7,7 @@ export const environment = {
   API_URL: 'http://localhost:4200/assets/users.json',
   movie_api_url: 'http://localhost:8083/movies/api',
   movie_list_api_url: 'http://localhost:8082/movie-list',
-  review_api_url: 'http://localhost:8084/api/reviews'
+  review_api_url: 'http://localhost:8084/api/review'
 };
 
 /*

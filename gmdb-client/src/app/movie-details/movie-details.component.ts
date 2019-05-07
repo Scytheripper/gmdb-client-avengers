@@ -17,7 +17,7 @@ export class MovieDetailsComponent implements OnInit {
   id:string;
   movie;
   addReviewForm : FormGroup;
-  reviewArr = [];
+  reviewArr;
   reviewObj : Review;
 
 
@@ -38,7 +38,13 @@ export class MovieDetailsComponent implements OnInit {
     //this.movie = this.movieService.getMovieBYID(this.id);
     this.movieService.getMovieById(this.id).subscribe(data => {
       this.movie = data.movie;
-    })
+      console.log(this.movie);
+    });
+
+    this.reviewService.getReviewsForMovie(this.id).subscribe(data => {
+      console.log(data);
+      this.reviewArr = data;
+    });
   }
 
   addReview(){
@@ -62,12 +68,13 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   submitReview(){
+    console.log(this.userService.getLoggedInUser());
     this.reviewService.submitReview({
       movieId: this.id,
       email: this.userService.getLoggedInUser().email,
       description: this.addReviewForm.controls.reviewComment.value,
       title: this.addReviewForm.controls.reviewTitle.value
-    });
+    }).subscribe();
   }
 
   

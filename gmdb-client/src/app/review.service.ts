@@ -52,12 +52,12 @@ export class ReviewService {
   }
 
   //Use new api methods
-  submitReview(review) {
-    this.httpclient.post(`${environment.review_api_url}`, review);
+  submitReview(review): Observable<any> {
+    return this.httpclient.post(`${environment.review_api_url}`, review);
   }
 
-  getReviewsForMovie(movieId) {
-    this.httpclient.get(`${environment.review_api_url}?movieId=${movieId}`);
+  getReviewsForMovie(movieId):Observable<any[]>  {
+    return this.httpclient.get<any[]>(`${environment.review_api_url}?movieId=${movieId}`);
   }
 
 }
