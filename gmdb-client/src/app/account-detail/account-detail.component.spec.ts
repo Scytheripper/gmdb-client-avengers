@@ -4,6 +4,7 @@ import { AccountDetailComponent } from './account-detail.component';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 
 class MockUserService {
@@ -34,7 +35,8 @@ describe('AccountDetailComponent', () => {
       ],
       imports: [
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        HttpClientTestingModule
       ]
     })
     .compileComponents();
