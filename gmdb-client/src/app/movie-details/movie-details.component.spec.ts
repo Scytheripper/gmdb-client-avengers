@@ -8,6 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReviewService } from '../review.service';
+import { UserService } from '../user.service';
 
 class MockMovieService {
   getMovieBYID(){
@@ -90,6 +91,11 @@ class MockMovieService {
   });
   }
 }
+class MockUserService {
+  getLoggedInUser(){
+    return {username: "username"}
+  }
+}
 class MockReviewService {
   getReviewsForMovie(){ return new Observable<any>(); }
 }
@@ -110,7 +116,8 @@ describe('MovieDetailsComponent', () => {
           params: of({movieId: 'something'})
         }},
         {provide: MovieService, useClass:MockMovieService},
-        {provide: ReviewService, useClass:MockReviewService}
+        {provide: ReviewService, useClass:MockReviewService},
+        {provide: UserService, useClass:MockUserService}
       ],
     
     })

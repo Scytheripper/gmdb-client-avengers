@@ -49,7 +49,7 @@ afterEach(() => {
     let movieId="abc123";
     service.addMovieToList(id, movieId).subscribe(data => console.log(data));
 
-    const req = httpTestingController.expectOne(`http://localhost:8082/movie-list/putMovie?id=${id}&movieId=${movieId}`);
+    const req = httpTestingController.expectOne(`http://localhost:8082/movie-list/putMovie?movieListId=${id}&movieId=${movieId}`);
 
     expect(req.request.method).toEqual('PUT');
   });
@@ -59,7 +59,7 @@ afterEach(() => {
     let movieId="abc123";
     service.deleteMovieFromList(id, movieId).subscribe(data => console.log(data));
 
-    const req = httpTestingController.expectOne(`http://localhost:8082/movie-list/deleteMovie?id=${id}&movieId=${movieId}`);
+    const req = httpTestingController.expectOne(`http://localhost:8082/movie-list/deleteMovie?movieListId=${id}&movieId=${movieId}`);
 
     expect(req.request.method).toEqual('DELETE');
   });
@@ -68,7 +68,7 @@ afterEach(() => {
     let id=1;
     service.deleteMovieList(id).subscribe(data => console.log(data));
 
-    const req = httpTestingController.expectOne(`http://localhost:8082/movie-list/deleteMovieList?id=${id}`);
+    const req = httpTestingController.expectOne(`http://localhost:8082/movie-list/deleteMovieList?movieListId=${id}`);
 
     expect(req.request.method).toEqual('DELETE');
   });

@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Review } from '../review';
 import { ReviewService } from '../review.service';
+import { MovieListService } from '../movie-list.service';
+import { MovieList } from '../movie-list';
 
 @Component({
   selector: 'app-movie-details',
@@ -19,31 +21,35 @@ export class MovieDetailsComponent implements OnInit {
   addReviewForm : FormGroup;
   reviewArr;
   reviewObj : Review;
+  usersLists;
 
 
   @Input()
   passedVari: Movie[];
 
   constructor(private route: ActivatedRoute, private movieService: MovieService
-    , private fb:FormBuilder,private userService: UserService, private reviewService: ReviewService) { }
+    , private fb:FormBuilder,private userService: UserService, private reviewService: ReviewService, private movieListService: MovieListService) { }
 
   ngOnInit() {
+    console.log(this.userService.getLoggedInUser());
      //initailise form
      this.addReviewForm = this.fb.group({
       reviewTitle:['', Validators.required],
       reviewComment:['', Validators.required],
-   })
+    });
 
     this.route.params.subscribe(({movieId}) => this.id = movieId);
     //this.movie = this.movieService.getMovieBYID(this.id);
     this.movieService.getMovieById(this.id).subscribe(data => {
       this.movie = data.movie;
-      console.log(this.movie);
     });
 
     this.reviewService.getReviewsForMovie(this.id).subscribe(data => {
       console.log(data);
       this.reviewArr = data;
+    });
+    this.movieListService.getUsersLists(this.userService.getLoggedInUser().username).subscribe( data => {
+      this.usersLists = data;
     });
   }
 
@@ -77,6 +83,8 @@ export class MovieDetailsComponent implements OnInit {
     }).subscribe();
   }
 
-  
+  addToList(id, movieId){
+    this.movieListService.addMovieToList(id, movieId).subscribe();
+  }
 
 }

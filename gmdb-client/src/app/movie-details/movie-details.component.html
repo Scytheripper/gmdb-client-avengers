@@ -31,7 +31,12 @@
       </table>     
   </div>
 </div>
-
+<div *ngIf="userService.getLoggedInUser() !== undefined"class="continer">
+  Add to list
+  <ul>
+    <li *ngFor="let list of usersLists"><a (click)="addToList(list.id, movie.imdbid)">{{list.name}}</a></li>
+  </ul>
+</div>
 
 
 

@@ -16,15 +16,15 @@ export class MovieListService {
   }
 
   addMovieToList(id: number, movieId: string): Observable<any> {
-    return this.http.put(`${environment.movie_list_api_url}/putMovie?id=${id}&movieId=${movieId}`,{});
+    return this.http.put(`${environment.movie_list_api_url}/putMovie?movieListId=${id}&movieId=${movieId}`,{});
   }
 
   deleteMovieFromList(id: number, movieId: string): Observable<any> {
-    return this.http.delete(`${environment.movie_list_api_url}/deleteMovie?id=${id}&movieId=${movieId}`);
+    return this.http.delete(`${environment.movie_list_api_url}/deleteMovie?movieListId=${id}&movieId=${movieId}`);
   }
 
   deleteMovieList(id){
-    return this.http.delete(`${environment.movie_list_api_url}/deleteMovieList?id=${id}`);
+    return this.http.delete(`${environment.movie_list_api_url}/deleteMovieList?movieListId=${id}`);
   }
 
   getUsersLists(username): Observable<MovieList[]>{
