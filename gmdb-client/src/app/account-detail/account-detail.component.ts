@@ -30,6 +30,7 @@ export class AccountDetailComponent implements OnInit {
     this.user = {
       id: 1,
       username: "guest",
+      name: "name",
       password: "password",
       email: "email@email.com" 
     }  
