@@ -31,7 +31,8 @@ export class MovieListComponent implements OnInit {
       })
     });
    });
-   
   }
-
+  removeFromList(id, movieId){
+    this.movieListService.deleteMovieFromList(id, movieId).subscribe();
+  }
 }

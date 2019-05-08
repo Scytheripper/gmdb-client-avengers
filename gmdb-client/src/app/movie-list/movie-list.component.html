@@ -1,3 +1,3 @@
 
   <b>{{movieList.name}}</b>
-  <div *ngFor="let movie of movies"><a routerLink="/movieDetails/{{movie.imdbid}}">{{movie.title}}</a></div>
+  <div *ngFor="let movie of movies"><a routerLink="/movieDetails/{{movie.imdbid}}">{{movie.title}}</a><button (click) = "removeFromList(movieList.id, movie.imdbid)">Remove</button></div>
