@@ -45,7 +45,6 @@ export class UserService {
 
   signup(user: User) {
     //STORE THE USER IN LOCAL STORAGE FOR NOW 
-    console.log(JSON.parse(localStorage.getItem('users')));
     if(JSON.parse(localStorage.getItem('users')) === null){
       this.users = [];
     }
@@ -56,5 +55,26 @@ export class UserService {
     this.http.post(environment.API_URL, user).subscribe();
 
     console.log('User signed up');
+  }
+
+  //AUTH API SERVICE
+  signupAuth(user: User) {
+    let body = {
+      name: user.name,
+      email: user.email,
+      username: user.username,
+      password: user.password,
+      role: ['ROLE_USER']
+    }
+
+    return this.http.post(`${environment.auth_api_url}/signup`, body);
+  }
+
+  signinAuth(username, password): Observable<User> {
+    let body = {
+      username,
+      password
+    };
+    return this.http.post<User>(`${environment.auth_api_url}/signin`, body)
   }
 }

@@ -45,7 +45,7 @@ describe('UserService', () => {
   it('should set the currently logged in user', () => {
     //Setup 
     const service: UserService = TestBed.get(UserService);
-    const user = {id: 1, username: 'guest',name:'name', password: 'password', email: 'email@email.com'};
+    const user = {id: 1, name: "name", username: 'guest', password: 'password', email: 'email@email.com'};
 
     //Exercise
     service.setLoggedInUser(user);
@@ -56,7 +56,7 @@ describe('UserService', () => {
 
   it('should modify the user', () => {
     const service: UserService = TestBed.get(UserService);
-    const user = {id: 1, username: 'guest',name:'name', password: 'password', email: 'email@email.com'};
+    const user = {id: 1, name: "name", username: 'guest', password: 'password', email: 'email@email.com'};
 
     service.updateUser(user);
 
@@ -66,7 +66,7 @@ describe('UserService', () => {
 
   it('should allow user to sign up', () => {
     const service: UserService = TestBed.get(UserService);
-    const user = {id: 1,name:'name', username: 'guest', password: 'password', email: 'email@email.com'};
+    const user = {id: 1, name: "name", username: 'guest', password: 'password', email: 'email@email.com'};
 
     service.signup(user);
 

@@ -37,7 +37,7 @@ afterEach(() => {
         expect(movieList.movieIds).toEqual([]);
       });
 
-      const req = httpTestingController.expectOne('http://localhost:8085/movie-list/createMovieList');
+      const req = httpTestingController.expectOne('http://localhost:8082/movie-list/createMovieList');
 
       expect(req.request.method).toEqual('POST');
 
@@ -49,7 +49,7 @@ afterEach(() => {
     let movieId="abc123";
     service.addMovieToList(id, movieId).subscribe(data => console.log(data));
 
-    const req = httpTestingController.expectOne(`http://localhost:8085/movie-list/putMovie?id=${id}&movieId=${movieId}`);
+    const req = httpTestingController.expectOne(`http://localhost:8082/movie-list/putMovie?id=${id}&movieId=${movieId}`);
 
     expect(req.request.method).toEqual('PUT');
   });
@@ -59,7 +59,7 @@ afterEach(() => {
     let movieId="abc123";
     service.deleteMovieFromList(id, movieId).subscribe(data => console.log(data));
 
-    const req = httpTestingController.expectOne(`http://localhost:8085/movie-list/deleteMovie?id=${id}&movieId=${movieId}`);
+    const req = httpTestingController.expectOne(`http://localhost:8082/movie-list/deleteMovie?id=${id}&movieId=${movieId}`);
 
     expect(req.request.method).toEqual('DELETE');
   });
@@ -68,7 +68,7 @@ afterEach(() => {
     let id=1;
     service.deleteMovieList(id).subscribe(data => console.log(data));
 
-    const req = httpTestingController.expectOne(`http://localhost:8085/movie-list/deleteMovieList?id=${id}`);
+    const req = httpTestingController.expectOne(`http://localhost:8082/movie-list/deleteMovieList?id=${id}`);
 
     expect(req.request.method).toEqual('DELETE');
   });
@@ -97,7 +97,7 @@ afterEach(() => {
       });
     });
 
-    const req = httpTestingController.expectOne(`http://localhost:8085/movie-list/getUsersLists?username=${username}`);
+    const req = httpTestingController.expectOne(`http://localhost:8082/movie-list/getUsersLists?username=${username}`);
 
     expect(req.request.method).toEqual('GET');
 

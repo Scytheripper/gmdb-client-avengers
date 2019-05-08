@@ -25,19 +25,7 @@ export class AccountDetailComponent implements OnInit {
       confirmPassword: ['', [Validators.minLength(6), Validators.required]]
     });
     this.user = this.userService.getLoggedInUser();
-
-    //TEMP USER TO REFLECT USE
-    this.user = {
-      id: 1,
-      username: "guest",
-      name: "name",
-      password: "password",
-      email: "email@email.com" 
-    }  
-    this.userService.loggedInUser = this.user;
-    //////////////////////////
-
-    this.user = this.userService.getLoggedInUser();
+    console.log(this.user);
     this.movieListService.getUsersLists(this.user.username).subscribe(movieLists => this.movieLists =  movieLists);
   }
 

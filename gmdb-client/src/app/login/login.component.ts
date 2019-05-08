@@ -25,8 +25,11 @@ export class LoginComponent implements OnInit {
     let userName= this.loginForm.controls.userName.value;
     let password= this.loginForm.controls.password.value;
 
-    this.userService.login(userName,password);
+    this.userService.signinAuth(userName, password).subscribe( data => {
+      this.userService.setLoggedInUser(data);
+      localStorage.setItem('accessToken', data['accessToken']);
+      this.router.navigateByUrl('/home');
+    });
     //redirect to the home page
-    this.router.navigateByUrl('/home');
   }
 }

@@ -11,15 +11,15 @@ import { MovieList } from '../movie-list';
 export class MovieListComponent implements OnInit {
   loggedUsername:string;
 
-  @Input()
-  movieList:MovieList;
+  @Input('movieList')
+  movieList:MovieList = new MovieList();
 
-  constructor(private userService:UserService, private movieListSerice : MovieListService ) { }
+  constructor(private userService:UserService, private movieListService : MovieListService ) { }
 
   ngOnInit() {
   //  return the movie list based on logged in user
   this.loggedUsername = this.userService.getLoggedInUser().username;
-   this.movieListSerice.getUsersLists(this.loggedUsername).subscribe(data =>{
+   this.movieListService.getUsersLists(this.loggedUsername).subscribe(data =>{
     // this.userMovieList = data;
    });
 

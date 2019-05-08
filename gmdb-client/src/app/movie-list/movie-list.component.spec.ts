@@ -6,7 +6,18 @@ import { User } from '../user';
 import { MovieListService } from '../movie-list.service';
 import { MovieList } from '../movie-list';
 import { Observable,of } from 'rxjs';
+import { Component } from '@angular/core';
 
+@Component({
+  selector: `app-account-detail`,
+  template: `<movie-list></movie-list>`
+})
+class MockAccountDetails{
+  movieList; 
+  setInput(input){
+    this.movieList = input;
+  }
+}
 
 class MockUserService {
   loggedInUser =  {
@@ -16,9 +27,7 @@ class MockUserService {
     password: "password",
     email: "email@email.com" 
   }
-  updateUser(user: User) {
-
-  }
+  
   getLoggedInUser(){
     return this.loggedInUser;
   }
@@ -40,11 +49,13 @@ describe('MovieListComponent', () => {
   let component: MovieListComponent;
   let fixture: ComponentFixture<MovieListComponent>;
   let mockMovieListService: MockMovieListService;
+  let accountDetailsFixture: ComponentFixture<MockAccountDetails>;
+  let accountDetailsComponent: MockAccountDetails;
 
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieListComponent ],
+      declarations: [ MovieListComponent, MockAccountDetails ],
       providers: [
         {provide: UserService, useClass: MockUserService },
         {provide: MovieListService, useClass: MockMovieListService}
@@ -59,6 +70,15 @@ describe('MovieListComponent', () => {
     fixture = TestBed.createComponent(MovieListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    // component.movieList = {"id":1,"name":"favorite","username":"guest","movieIds":["abc123","tty908"]};
+    component.movieList = new MovieList();
+    console.log(component.movieList);
+    fixture.detectChanges();
+
+    accountDetailsFixture = TestBed.createComponent(MockAccountDetails);
+    accountDetailsComponent = accountDetailsFixture.componentInstance;
+    accountDetailsFixture.detectChanges();
   });
 
   it('should create', () => {
@@ -72,5 +92,5 @@ describe('MovieListComponent', () => {
     
   });
 
-
 });
+

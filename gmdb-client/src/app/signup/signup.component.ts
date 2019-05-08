@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
     this.signupForm = this.fb.group({
       username: ['', [Validators.required,Validators.minLength(3)]],
+      name: ['', Validators.required],
       password: ['', [Validators.required,Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]]
@@ -26,10 +27,12 @@ export class SignupComponent implements OnInit {
   signupUser() {
     if(this.signupForm.valid) {
       let user = new User();
+      user.name = this.signupForm.controls.name.value;
       user.email = this.signupForm.controls.email.value;
       user.username = this.signupForm.controls.username.value;
       user.password = this.signupForm.controls.password.value;
       this.userService.signup(user);
+      this.userService.signupAuth(user).subscribe();
       this.router.navigateByUrl('/login');
       console.log('User added');
       return true;
