@@ -26,11 +26,13 @@ export class SignupComponent implements OnInit {
 
   signupUser() {
     if(this.signupForm.valid) {
+      console.log('asa');
       let user = new User();
       user.name = this.signupForm.controls.name.value;
       user.email = this.signupForm.controls.email.value;
       user.username = this.signupForm.controls.username.value;
       user.password = this.signupForm.controls.password.value;
+      this.userService.signup(user);
       this.userService.signupAuth(user).subscribe();
       this.router.navigateByUrl('/login');
       console.log('User added');
