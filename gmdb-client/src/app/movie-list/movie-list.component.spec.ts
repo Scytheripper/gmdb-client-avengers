@@ -7,6 +7,7 @@ import { MovieListService } from '../movie-list.service';
 import { MovieList } from '../movie-list';
 import { Observable,of } from 'rxjs';
 import { Component } from '@angular/core';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: `app-account-detail`,
@@ -44,6 +45,9 @@ class MockMovieListService {
 
 }
 
+class MockMovieService {
+
+}
 
 describe('MovieListComponent', () => {
   let component: MovieListComponent;
@@ -58,7 +62,8 @@ describe('MovieListComponent', () => {
       declarations: [ MovieListComponent, MockAccountDetails ],
       providers: [
         {provide: UserService, useClass: MockUserService },
-        {provide: MovieListService, useClass: MockMovieListService}
+        {provide: MovieListService, useClass: MockMovieListService},
+        {provide: MovieService, useClass: MockMovieService}
       ],
       imports:[]
     })
