@@ -34,7 +34,11 @@
 <div *ngIf="userService.getLoggedInUser() !== undefined"class="continer">
   Add to list
   <ul>
-    <li *ngFor="let list of usersLists"><a (click)="addToList(list.id, movie.imdbid)">{{list.name}}</a></li>
+    <li *ngFor="let list of usersLists">
+      <a *ngIf="!list.movieIds.includes(movie.imdbid)"(click)="addToList(list.id, movie.imdbid)">+ {{list.name}}</a>
+      <a *ngIf="list.movieIds.includes(movie.imdbid)"(click)="removeFromList(list.id, movie.imdbid)">- {{list.name}}</a>
+
+    </li>
   </ul>
 </div>
 

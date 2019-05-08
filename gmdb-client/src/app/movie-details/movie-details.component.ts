@@ -87,4 +87,8 @@ export class MovieDetailsComponent implements OnInit {
     this.movieListService.addMovieToList(id, movieId).subscribe();
   }
 
+  removeFromList(id, movieId){
+    this.movieListService.deleteMovieFromList(id, movieId).subscribe();
+  }
+
 }

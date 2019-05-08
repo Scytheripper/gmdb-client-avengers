@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReviewService } from '../review.service';
 import { UserService } from '../user.service';
+import { MovieListService } from '../movie-list.service';
 
 class MockMovieService {
   getMovieBYID(){
@@ -99,6 +100,13 @@ class MockUserService {
 class MockReviewService {
   getReviewsForMovie(){ return new Observable<any>(); }
 }
+class MockMovieListService {
+  getUsersLists(){
+    return of([
+      {name: 'list', username: 'username', movieIds: []}
+    ])
+  }
+}
 describe('MovieDetailsComponent', () => {
   let component: MovieDetailsComponent;
   let fixture: ComponentFixture<MovieDetailsComponent>;
@@ -117,7 +125,8 @@ describe('MovieDetailsComponent', () => {
         }},
         {provide: MovieService, useClass:MockMovieService},
         {provide: ReviewService, useClass:MockReviewService},
-        {provide: UserService, useClass:MockUserService}
+        {provide: UserService, useClass:MockUserService},
+        {provide: MovieListService, useClass:MockMovieListService}
       ],
     
     })
