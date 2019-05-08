@@ -12,6 +12,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { ReviewComponent } from './review/review.component';
+import { MovieListComponent } from './movie-list/movie-list.component';
 
 
 
@@ -23,7 +24,8 @@ import { ReviewComponent } from './review/review.component';
     HomeComponent,
     MovieDetailsComponent,
     LoginComponent,
-    ReviewComponent
+    ReviewComponent,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,

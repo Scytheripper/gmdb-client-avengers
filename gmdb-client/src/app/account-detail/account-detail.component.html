@@ -20,8 +20,9 @@
 
 <div>
   <h3>Movie Lists</h3>
-  <div *ngFor="let list of movieLists">
-    <h4>{{list.name}}</h4>
-  </div>
+  <movie-list *ngFor="let list of movieLists" [movieList]="list">
+  </movie-list>
+
+  
 </div>
 
