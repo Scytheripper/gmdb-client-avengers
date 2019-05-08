@@ -2,6 +2,8 @@
   <h2>Create Account</h2>
   <div>
     <form (ngSubmit)="signupUser()" [formGroup]="signupForm">
+        <input type="text" name="name" placeholder="name" formControlName="name">
+        <span *ngIf = "signupForm.controls.name.dirty && signupForm.controls.name.invalid">Enter a name!</span>
         <input type="email" name="email" placeholder="email" formControlName="email">
         <span *ngIf = "signupForm.controls.email.dirty && signupForm.controls.email.invalid">Enter a valid email!</span>
         <input type="text" name="username" placeholder="username" formControlName="username">
