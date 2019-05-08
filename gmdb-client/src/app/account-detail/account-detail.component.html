@@ -1,28 +1,28 @@
+<div *ngIf="userService.loggedInUser !== undefined">
+  <div class="container">
+    <div>Username: <span id="username">{{user.username}}</span></div>
+    <div>Email: <span id="email">{{user.email}}</span></div>
+  </div>
 
-<div *ngIf="userService.loggedInUser !== undefined" class="container">
-  <div>Username: <span id="username">{{user.username}}</span></div>
-  <div>Email: <span id="email">{{user.email}}</span></div>
-</div>
+  <div id="change-password"class="container">
+    <button (click)="toggleChangingPassword()">Change Password</button>
+    <div *ngIf="changingPassword">
+      <form (ngSubmit)="changePassword()" [formGroup]="passwordForm">
+          <input name="newPassword" formControlName="newPassword" type="password">
+          <input name="confirmPassword" formControlName="confirmPassword" type="password">
+          <input *ngIf="passwordForm.controls.newPassword.value === passwordForm.controls.confirmPassword.value && passwordForm.controls.confirmPassword.value !== ''; else passwordsNotMatching" type="submit" value="Submit">
+          <ng-template #passwordsNotMatching>
+            <p>Make sure both password are the same!</p>
+          </ng-template>
+      </form>
+    </div>
+  </div>
 
-<div id="change-password"class="container">
-  <button (click)="toggleChangingPassword()">Change Password</button>
-  <div *ngIf="changingPassword">
-    <form (ngSubmit)="changePassword()" [formGroup]="passwordForm">
-        <input name="newPassword" formControlName="newPassword" type="password">
-        <input name="confirmPassword" formControlName="confirmPassword" type="password">
-        <input *ngIf="passwordForm.controls.newPassword.value === passwordForm.controls.confirmPassword.value && passwordForm.controls.confirmPassword.value !== ''; else passwordsNotMatching" type="submit" value="Submit">
-        <ng-template #passwordsNotMatching>
-          <p>Make sure both password are the same!</p>
-        </ng-template>
-    </form>
+  <div>
+    <h3>Movie Lists</h3>
+    <movie-list *ngFor="let list of movieLists" [movieList]="list">
+    </movie-list>  
   </div>
 </div>
 
-<div>
-  <h3>Movie Lists</h3>
-  <movie-list *ngFor="let list of movieLists" [movieList]="list">
-  </movie-list>
-
-  
-</div>
 
