@@ -1,16 +1,9 @@
-<h1>{{movie?.Title}}</h1>
-<!-- 
-<img src="{{movie.Poster}}">
-<div *ngFor="let item of movie| keyvalue">
-  <b>{{item.key}}</b>:
-  {{item.value}}
-</div> -->
-
-<div class="container">
-    <img class="card-img-top" src="{{movie?.poster}}">
-</div>
-<h2>{{movie.title}}</h2>
-<div class="container">
+<h2>{{movie?.title}}</h2>
+<div class="movie-details">
+  <div class="poster-container container">
+      <img class="card-img-top" src="{{movie?.poster}}">
+  </div>
+  <div class="details">
     <p>{{movie?.plot}}</p>
     <table>
         <tbody>
@@ -35,17 +28,29 @@
             <td>{{movie?.runtime}}</td>
           </tr>
         </tbody>
-      </table>
-            
+      </table>     
+  </div>
 </div>
 
-<form [formGroup]="addReviewForm"  (ngSubmit)="addReview()">
-  <div>
-    <h5>Add Review:</h5>
-    <input type="text" formControlName="reviewTitle"  placeholder="Review Heading!!">
+
+
+
+<div class="container">
+  <form [formGroup]="addReviewForm"  (ngSubmit)="submitReview()">
+    <div>
+      <h5>Add Review:</h5>
+      <input type="text" formControlName="reviewTitle"  placeholder="Review Heading!!">
+    </div>
+      <textarea name="comment" formControlName="reviewComment" placeholder="Your Review!!!"></textarea>
+      <input type="submit" value="Post Review" style="width:180px;height:30px;" [disabled]="addReviewForm.invalid">
+  </form>
 </div>
-  <textarea name="comment" formControlName="reviewComment" placeholder="Your Review!!!"></textarea>
-  <input type="submit" value="Post Review" style="width:180px;height:30px;" [disabled]="addReviewForm.invalid">
 
-
-</form>
+<div class="container">
+  <h2>Reviews</h2>
+  <div *ngFor="let review of reviewArr" class="review">
+    <h4>{{review.title}}</h4>
+    <p>{{review.description}} by {{review.email}}</p>
+    <span>{{review.timeStamp}}</span>
+  </div>
+</div>
