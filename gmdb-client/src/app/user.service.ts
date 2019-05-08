@@ -70,12 +70,11 @@ export class UserService {
     return this.http.post(`${environment.auth_api_url}/signup`, body);
   }
 
-  signinAuth(username, password) {
+  signinAuth(username, password): Observable<User> {
     let body = {
       username,
       password
     };
-
-    return this.http.post(`${environment.auth_api_url}/signin`, body)
+    return this.http.post<User>(`${environment.auth_api_url}/signin`, body)
   }
 }

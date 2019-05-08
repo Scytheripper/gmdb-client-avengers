@@ -31,7 +31,6 @@ export class SignupComponent implements OnInit {
       user.email = this.signupForm.controls.email.value;
       user.username = this.signupForm.controls.username.value;
       user.password = this.signupForm.controls.password.value;
-      this.userService.signup(user);
       this.userService.signupAuth(user).subscribe();
       this.router.navigateByUrl('/login');
       console.log('User added');
