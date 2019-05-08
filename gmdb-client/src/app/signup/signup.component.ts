@@ -26,7 +26,6 @@ export class SignupComponent implements OnInit {
 
   signupUser() {
     if(this.signupForm.valid) {
-      console.log('asa');
       let user = new User();
       user.name = this.signupForm.controls.name.value;
       user.email = this.signupForm.controls.email.value;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { reviews } from '../assets/reviews.json';
 import { Review } from './review.js';
 import { User } from './user.js';
@@ -54,6 +54,12 @@ export class ReviewService {
   //Use new api methods
   submitReview(review): Observable<any> {
     return this.httpclient.post(`${environment.review_api_url}`, review);
+    // console.log(localStorage.getItem('accessToken'));
+    // let options = new HttpHeaders({
+    //   'Content-Type': 'application/json', 
+    //   'Authorization': localStorage.getItem('accessToken')
+    // });
+    // return this.httpclient.post('http://localhost:8080/api/review', review, {headers: options});
   }
 
   getReviewsForMovie(movieId):Observable<any[]>  {
