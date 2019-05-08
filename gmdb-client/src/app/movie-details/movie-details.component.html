@@ -1,25 +1,39 @@
-<h1>{{movie?.title}}</h1>
-<!-- 
-<img src="{{movie.Poster}}">
-<div *ngFor="let item of movie| keyvalue">
-  <b>{{item.key}}</b>:
-  {{item.value}}
-</div> -->
-
-
-<div class="card text-center">
-
-  <img class="card-img-top" src="{{movie?.poster}}">
-  <div class="card-body">
-    <h5 class="card-title">{{movie?.title}}</h5>
-    <div *ngFor="let item of movie| keyvalue" class="col m4 s7">
-      <p class="card-text">
-        <b>{{item.key}}</b>:
-        {{item.value}}
-      </p>
-    </div>
+<h2>{{movie?.title}}</h2>
+<div class="movie-details">
+  <div class="poster-container container">
+      <img class="card-img-top" src="{{movie?.poster}}">
+  </div>
+  <div class="details">
+    <p>{{movie?.plot}}</p>
+    <table>
+        <tbody>
+          <tr>
+            <td>Actors</td>
+            <td>{{movie?.actors}}</td>
+          </tr>
+          <tr>
+            <td>Released</td>
+            <td>{{movie?.released}}</td>
+          </tr>
+          <tr>
+            <td>Genre</td>
+            <td>{{movie?.genre}}</td>
+          </tr>
+          <tr>
+            <td>Director(s)</td>
+            <td>{{movie?.director}}</td>
+          </tr>
+          <tr>
+            <td>Runtime</td>
+            <td>{{movie?.runtime}}</td>
+          </tr>
+        </tbody>
+      </table>     
   </div>
 </div>
+
+
+
 
 <div class="container">
   <form [formGroup]="addReviewForm"  (ngSubmit)="submitReview()">

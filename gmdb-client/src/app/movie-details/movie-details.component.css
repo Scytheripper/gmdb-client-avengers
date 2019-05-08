@@ -1,0 +1,16 @@
+.movie-details{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.poster-container{
+    /* margin-left: 50px; */
+    width:30%;
+    display: inline-block;
+}
+/* margin-right: 150px; */
+    .details{
+    width:70%;
+    display: inline-block;
+}

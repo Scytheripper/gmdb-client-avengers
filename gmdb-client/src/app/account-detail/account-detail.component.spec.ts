@@ -11,6 +11,7 @@ class MockUserService {
   loggedInUser =  {
     id: 1,
     username: "guest",
+    name: "name",
     password: "password",
     email: "email@email.com" 
   }
@@ -55,6 +56,7 @@ describe('AccountDetailComponent', () => {
   it('should get the logged in user from the service', () =>  {
     const user = {
       id: 1,
+      name: "name",
       username: "guest",
       password: "password",
       email: "email@email.com" 
