@@ -5,6 +5,7 @@ import { UserService } from '../user.service';
 import { User } from '../user';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MovieListComponent } from '../movie-list/movie-list.component';
 
 
 class MockUserService {
@@ -30,7 +31,7 @@ describe('AccountDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccountDetailComponent ],
+      declarations: [ AccountDetailComponent ,MovieListComponent],
       providers: [
         {provide: UserService, useClass: MockUserService }
       ],
